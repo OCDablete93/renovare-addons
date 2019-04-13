@@ -4,18 +4,18 @@
 
 
 NSString *firstaidpath = @"Applications/Cydia.app/addonicon.png";   ///Make Sure to change the filename
-static UINavigationController* navkush;
+static UINavigationController* replace;
 
 static NSString* tabTitle = @"tabTitle";
 static NSString* webpageURL = @"http://iosjailbreak.xyz";
 
-@interface KSYYWebTabController : UIViewController
+@interface ReplaceWebTabController : UIViewController
 {
     WKWebView* webView;
 }
 @end
 
-@implementation KSYYWebTabController
+@implementation ReplaceWebTabController
 -(void)loadView
 {
     [super loadView];
@@ -54,8 +54,8 @@ static NSString* webpageURL = @"http://iosjailbreak.xyz";
 {
     %orig;
     //set the nav controller's view controller to our web controller
-    KSYYWebTabController* webVC = [KSYYWebTabController new];
-    [navkush setViewControllers:@[webVC]];
+    ReplaceWebTabController* webVC = [ReplaceWebTabController new];
+    [replace setViewControllers:@[webVC]];
 
 }
 %end
@@ -66,15 +66,15 @@ static NSString* webpageURL = @"http://iosjailbreak.xyz";
     //get a mutable copy of the view controllers
     NSMutableArray* controllers = [arg2 mutableCopy];
     //create the new nav controller
-    navkush = [[UINavigationController alloc] init];
+    replace = [[UINavigationController alloc] init];
 
     //TODO: set this too:
     UIImage* tabImg = [UIImage imageWithContentsOfFile:firstaidpath];
 
     //set the tab bar item information
-    navkush.tabBarItem = [[UITabBarItem alloc] initWithTitle:tabTitle image:tabImg tag:0];
+    replace.tabBarItem = [[UITabBarItem alloc] initWithTitle:tabTitle image:tabImg tag:0];
     //add the new view controller
-    [controllers addObject:navkush];
+    [controllers addObject:replace];
     //run %orig with an immutable copy
     %orig([controllers copy]);
 }
