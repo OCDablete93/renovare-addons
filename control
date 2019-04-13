@@ -1,0 +1,9 @@
+Package: com.yourname.name
+Name: ReplaceThis
+Depends: mobilesubstrate,ws.hbang.common,com.kushy.renovare
+Version: 0.1
+Architecture: iphoneos-arm
+Description: ReplaceThis
+Maintainer: yourname
+Author: yourname
+Section: Tweaks
